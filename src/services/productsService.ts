@@ -8,6 +8,6 @@ export async function create(IProduct: IProducts) {
 }
 
 export async function getAllProduct() {
-  const data = await productsModel.getAll();
+  const data = await productsModel.getAllProduct();
   return { status: 200, data };
 }
