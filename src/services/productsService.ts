@@ -6,3 +6,8 @@ export async function create(IProduct: IProducts) {
   const product = await productsModel.create(IProduct);
   return { status: 201, product };
 }
+
+export async function getAllProduct() {
+  const data = await productsModel.getAll();
+  return { status: 200, data };
+}
