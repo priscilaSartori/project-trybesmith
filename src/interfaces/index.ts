@@ -7,3 +7,10 @@ export interface IProducts {
 export interface Products extends IProducts {
   id: number;
 }
+
+export interface IUsers {
+  username: string;
+  vocation: string;
+  level: number;
+  password: string;
+}
