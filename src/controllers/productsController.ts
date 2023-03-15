@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 
 import { IProducts } from '../interfaces';
-import create from '../services/productsService';
+import * as productService from '../services/productsService';
 
-const createProduct = async (req: Request, res: Response) => {
+// eslint-disable-next-line import/prefer-default-export
+export async function createProduct(req: Request, res: Response) {
   const products = req.body as IProducts;
-  const { status, product } = await create(products);
+  const { status, product } = await productService.create(products);
   return res.status(status).json(product);
-};
-export default createProduct;
+}

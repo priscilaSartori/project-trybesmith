@@ -2,6 +2,7 @@ import { ResultSetHeader } from 'mysql2';
 import connection from './connection';
 import { Products, IProducts } from '../interfaces';
 
+// eslint-disable-next-line import/prefer-default-export
 export async function create(product: IProducts): Promise<Products> {
   const { name, amount } = product;
 
@@ -14,4 +15,3 @@ export async function create(product: IProducts): Promise<Products> {
   const newProduct: Products = { id, name, amount };
   return newProduct;
 }
-export default create;
