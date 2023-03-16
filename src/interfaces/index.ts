@@ -14,3 +14,7 @@ export interface IUsers {
   level: number;
   password: string;
 }
+
+export interface Users extends IUsers {
+  id: number;
+}

@@ -7,5 +7,6 @@ import { secret, config } from '../middlewares/jwtConfig';
 export async function createUsers(user: IUsers) {
   const payload = await usersModel.createUsers(user);
   const token = jwt.sign({ payload }, secret, config);
-  return { status: 201, token };
+  const data = { token, ...payload };
+  return { status: 201, data };
 }
