@@ -18,3 +18,9 @@ export interface IUsers {
 export interface Users extends IUsers {
   id: number;
 }
+
+export interface ILogin {
+  id: number;
+  userId: number;
+  productsIds: number[];
+}
