@@ -1,11 +1,12 @@
 import { Request, Response } from 'express';
 
 import { IUsers } from '../interfaces';
-import * as usersService from '../services/usersService';
+import usersService from '../services/usersService';
 
-// eslint-disable-next-line import/prefer-default-export
-export async function createUsers(req: Request, res: Response) {
+const createUsers = async (req: Request, res: Response) => {
   const users = req.body as IUsers;
-  const { status, data } = await usersService.createUsers(users);
+  const { status, data } = await usersService(users);
   return res.status(status).json(data);
-}
+};
+
+export default { createUsers };
