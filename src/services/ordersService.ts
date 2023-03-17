@@ -1,10 +1,10 @@
-import loginModel from '../models/ordersModel';
-import { ILogin } from '../interfaces';
+import orderModel from '../models/ordersModel';
+import { IOrder } from '../interfaces';
 
-const getAll = async (): Promise<ILogin[]> => {
-  const login = await loginModel.getAll();
-  return login;
+const getAll = async (): Promise<IOrder[]> => {
+  const order = await orderModel.getAll();
+  return order;
 };
-const loginService = { getAll };
+const orderService = { getAll };
 
-export default loginService;
+export default orderService;

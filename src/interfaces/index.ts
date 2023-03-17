@@ -19,7 +19,7 @@ export interface Users extends IUsers {
   id: number;
 }
 
-export interface ILogin {
+export interface IOrder {
   id: number;
   userId: number;
   productsIds: number[];
