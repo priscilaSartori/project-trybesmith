@@ -5,6 +5,12 @@ const getAll = async (): Promise<IOrder[]> => {
   const order = await orderModel.getAll();
   return order;
 };
-const orderService = { getAll };
+
+const createOrder = async (order: IOrder) => {
+  const orders = await orderModel.createOrder(order);
+  return { status: 201, orders };
+};
+
+const orderService = { getAll, createOrder };
 
 export default orderService;

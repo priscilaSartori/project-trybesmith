@@ -9,8 +9,8 @@ const getAll = async (req:Request, res:Response) => {
 
 const createOrder = async (req:Request, res:Response) => {
   const order = req.body as IOrder;
-  const { status, data } = await orderService.createOrder(order);
-  return res.status(status).json(data);
+  const { status, orders } = await orderService.createOrder(order);
+  return res.status(status).json(orders);
 };
 
 export default { getAll, createOrder };
