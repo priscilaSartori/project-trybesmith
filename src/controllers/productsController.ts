@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-
 import { IProducts } from '../interfaces';
 import * as productService from '../services/productsService';
 
