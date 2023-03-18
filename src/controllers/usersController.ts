@@ -9,9 +9,9 @@ const createUsers = async (req: Request, res: Response) => {
   return res.status(status).json(data);
 };
 
-const loginUsers = async (req: Request<object, object, ILogin>, res: Response) => {
-  const { body } = req;
-  const { status, data } = await usersService.loginUsers(body);
+const loginUsers = async (req: Request, res: Response) => {
+  const users = req.body as ILogin;
+  const { status, data } = await usersService.loginUsers(users);
   return res.status(status).json(data);
 };
 

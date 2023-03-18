@@ -12,15 +12,13 @@ const createUsers = async (user: IUsers) => {
 
 const loginUsers = async (login: ILogin) => {
   const users = await usersModel.loginUsers(login);
-  const validUsername = users.username.match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i);
-  const invalidPassword = users.password.length < 6;
-  if (!users.username) return { status: 400, message: '"username" is required' };
-  if (!users.password) return { status: 400, message: '"password" is required' };
-  if (!validUsername || invalidPassword) {
-    return { status: 401, message: 'Username or password invalid' };
+  if (users.length === 0 || users[0].password !== login.password) {
+    const message = { message: 'Username or password invalid' };
+    return { status: 401, data: message };
   }
   const token = jwt.sign({ users }, secret, config);
   const data = { token, ...users };
   return { status: 200, data };
 };
+
 export default { createUsers, loginUsers };

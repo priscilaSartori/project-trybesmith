@@ -13,9 +13,9 @@ const createUsers = async (user: IUsers): Promise<Users> => {
   return newUsers;
 };
 
-const loginUsers = async (login: ILogin): Promise<IUsers> => {
+const loginUsers = async (login: ILogin): Promise<IUsers[]> => {
   const { username } = login;
-  const [result] = await connection.execute<RowDataPacket[] & IUsers>(
+  const [result] = await connection.execute<RowDataPacket[] & IUsers[]>(
     `SELECT * FROM Trybesmith.users 
     WHERE username = ?;`,
     [username],
