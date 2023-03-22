@@ -1,7 +1,13 @@
 import jwt from 'jsonwebtoken';
 import { IUsers, ILogin } from '../interfaces';
 import usersModel from '../models/usersModel';
-import { secret, config } from '../middlewares/jwtConfig';
+
+const secret = 'Trybe';
+
+const config: object = {
+  expiresIn: '6h',
+  algorithm: 'HS256',
+};
 
 const createUsers = async (user: IUsers) => {
   const payload = await usersModel.createUsers(user);

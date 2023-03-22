@@ -1,4 +1,6 @@
-import { RowDataPacket } from 'mysql2';
+import { RowDataPacket, 
+  // ResultSetHeader 
+} from 'mysql2';
 import connection from './connection';
 import { IOrder } from '../interfaces';
 
@@ -12,6 +14,7 @@ const getAll = async (): Promise<IOrder[]> => {
   );
   return rows as IOrder[];
 };
-const ordersModel = { getAll };
 
-export default ordersModel;
+export default { getAll, 
+  // createOrder, updateOrder 
+};
