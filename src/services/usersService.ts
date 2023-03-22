@@ -2,10 +2,10 @@ import jwt from 'jsonwebtoken';
 import { IUsers, ILogin } from '../interfaces';
 import usersModel from '../models/usersModel';
 
-const secret = 'Trybe';
+const secret = 'secret';
 
 const config: object = {
-  expiresIn: '6h',
+  expiresIn: '1d',
   algorithm: 'HS256',
 };
 
