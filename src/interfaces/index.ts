@@ -21,6 +21,7 @@ export interface Users extends IUsers {
 }
 
 export interface IOrder {
+  // id: number;
   userId: number;
   productsIds: number[];
 }

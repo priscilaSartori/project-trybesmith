@@ -23,4 +23,18 @@ const loginUsers = async (login: ILogin): Promise<IUsers[]> => {
   return result;
 };
 
-export default { createUsers, loginUsers };
+const getIdUsername = async (username: string): Promise<Users[] | []> => {
+  const [result] = await connection.execute(
+    'SELECT * FROM Trybesmith.users WHERE username = ?',
+    [username],
+  );
+  return result as Users[] | [];
+  // const result = await connection.execute<ResultSetHeader>(
+  //   'SELECT * FROM Trybesmith.users WHERE username = ?',
+  //   [username],
+  // );
+  // console.log('usermodel result', result);
+  // return result as IUsers[];
+};
+
+export default { createUsers, loginUsers, getIdUsername };

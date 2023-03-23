@@ -1,19 +1,21 @@
-// import jwt from 'jsonwebtoken';
 import orderModel from '../models/ordersModel';
 import { IOrder } from '../interfaces';
-// import { secret, config } from '../middlewares/jwtConfig';
+import { update } from '../models/productsModel';
 
 const getAll = async (): Promise<IOrder[]> => {
   const order = await orderModel.getAll();
   return order;
 };
 
-// const createOrder = async (userId: number, order: IOrder) => {
-  
-// };
+const createOrder = async (userId: number, productsIds: number[]) => {
+  const orderId = await orderModel.createOrder(userId);
+  await Promise.all(productsIds.map((prodId) => update(orderId, prodId)));
+  return { userId: orderId, productsIds };
+};
 
-const orderService = { getAll, 
-  // createOrder 
+const orderService = { 
+  getAll, 
+  createOrder, 
 };
 
 export default orderService;

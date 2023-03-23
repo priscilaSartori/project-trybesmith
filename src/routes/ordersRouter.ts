@@ -11,6 +11,7 @@ router.post(
   '/', 
   validatesToken,
   validatesOrder.validatesProductId,
+  ordersController.createOrder,
 );
 
 export default router;
