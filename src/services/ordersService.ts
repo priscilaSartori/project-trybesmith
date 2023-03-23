@@ -10,7 +10,7 @@ const getAll = async (): Promise<IOrder[]> => {
 const createOrder = async (userId: number, productsIds: number[]) => {
   const orderId = await orderModel.createOrder(userId);
   await Promise.all(productsIds.map((prodId) => update(orderId, prodId)));
-  return { userId: orderId, productsIds };
+  return { userId, productsIds };
 };
 
 const orderService = { 

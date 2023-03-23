@@ -8,9 +8,9 @@ const getAll = async (req:Request, res:Response) => {
 };
 
 const createOrder = async (req:Request, res:Response) => {
-  const { data: { username }, productsIds } = req.body;
-  const [data] = await usersModel.getIdUsername(username);
-  const { id } = data;
+  const { data, productsIds } = req.body;
+  const dataUsername = await usersModel.getIdUsername(data.users[0].username);
+  const { id } = dataUsername[0];
   const result = await orderService.createOrder(id, productsIds);
   return res.status(201).json(result);
 };
